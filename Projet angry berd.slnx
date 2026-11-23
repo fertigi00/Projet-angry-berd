@@ -3,5 +3,7 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="Projet angry berd/Projet angry berd.vcxproj" />
+  <Project Path="Cyclone/Cyclone.vcxproj" Id="aa6f43b2-3559-4292-84e2-223cc0d51eba" />
+  <Project Path="Projet angry berd/Projet angry berd.vcxproj" Id="874f9b95-194f-409c-a1ea-63bdb13473af" />
+  <Project Path="Raylib/Raylib.vcxproj" Id="cceecf7d-a43a-48ba-bf05-9f2639794a63" />
 </Solution>

@@ -140,6 +140,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Projet angry berd.cpp" />
+    <ClCompile Include="raylib-quickstart-main\src\main.c" />
+    <ClCompile Include="SiegeLabTests\pch.cpp" />
+    <ClCompile Include="SiegeLabTests\test.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="raylib-quickstart-main\src\resource_dir.h" />
+    <ClInclude Include="SiegeLabTests\pch.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="raylib-quickstart-main\src\application.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
