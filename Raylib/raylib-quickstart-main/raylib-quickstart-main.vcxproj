@@ -316,9 +316,6 @@
     <Image Include="resources\wabbit_alpha.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\angry_berd\angry_berd.vcxproj">
-      <Project>{67cf62cb-49aa-4836-a4cf-dd09d1b4bbf1}</Project>
-    </ProjectReference>
     <ProjectReference Include="raylib.vcxproj">
       <Project>{8898EA18-743A-15EF-5DF5-284349369C3F}</Project>
     </ProjectReference>
