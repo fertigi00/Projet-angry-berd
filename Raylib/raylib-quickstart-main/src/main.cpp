@@ -7,13 +7,21 @@ by Jeffery Myers is marked with CC0 1.0. To view a copy of this license, visit h
 
 */
 
+#include "pch.h"
+#include <test.h>
+#include <iostream>
+
 #include "raylib.h"
 
 #include "resource_dir.h"	// utility header for SearchAndSetResourceDir
-#include <test.h>
+
 
 int main ()
 {
+	test t;
+	t.tzesrt();
+	
+
 	// Tell the window to use vsync and work on high DPI displays
 	SetConfigFlags(FLAG_VSYNC_HINT | FLAG_WINDOW_HIGHDPI);
 
@@ -22,7 +30,7 @@ int main ()
 
 	// Utility function from resource_dir.h to find the resources folder and set it as the current working directory so we can load from it
 	SearchAndSetResourceDir("resources");
-
+	 
 	// Load a texture from the resources directory
 	Texture wabbit = LoadTexture("wabbit_alpha.png");
 	
@@ -37,7 +45,7 @@ int main ()
 
 		// draw some text using the default font
 		DrawText("Hello Raylib", 200,200,20,WHITE);
-
+		
 		// draw our texture to the screen
 		DrawTexture(wabbit, 400, 200, WHITE);
 		

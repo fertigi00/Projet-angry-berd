@@ -3,4 +3,5 @@
 
 void test::tzesrt()
 {
+	std::cout << "Hello World!" << std::endl;
 }
