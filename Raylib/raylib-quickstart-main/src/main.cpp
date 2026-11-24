@@ -9,7 +9,8 @@ by Jeffery Myers is marked with CC0 1.0. To view a copy of this license, visit h
 
 #include "pch.h"
 #include <test.h>
-
+#include <InputController.h>
+#include <Launcher.h>
 #include "raylib.h"
 
 #include "resource_dir.h"	// utility header for SearchAndSetResourceDir
@@ -18,8 +19,22 @@ by Jeffery Myers is marked with CC0 1.0. To view a copy of this license, visit h
 int main ()
 {
 	/*test t;
-	t.tzesrt();*/
-	
+	//t.tzesrt();*/
+	//InputController inputController;
+	//Launcher launcher;
+
+	//// Inside your game loop:
+	//float deltaTime = GetFrameTime();
+
+	//LauncherInput input = inputController.capture();
+
+	//launcher.aim(input, deltaTime);
+
+	//// Get firing information
+	//ShotSettings shot = launcher.shotSettings();
+
+	//// When firing:
+	//Vector3 velocity = shot.initialVelocity();
 
 	// Tell the window to use vsync and work on high DPI displays
 	SetConfigFlags(FLAG_VSYNC_HINT | FLAG_WINDOW_HIGHDPI);

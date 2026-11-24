@@ -1,40 +1,176 @@
 #pragma once
 #include "pch.h"
-#include "..\Cyclone\include\cyclone.h"
+#include <array>
+#include <cstddef>
+#include <cstdint>
+#include <optional>
+#include <utility>
+#include <concepts>
+#include <type_traits>
 
-class ObjectPool
+struct EntityId
+{
+    std::size_t index;
+    std::uint64_t generation;
+
+    bool operator==(const EntityId&) const = default;
+};
+
+class GameEntity
 {
 public:
-	void SceneObject();
-	void create();
-	void getPosition();
-	void getID();
-	void destroy();
-	void forEach();
-	void clear();
-	int id;
-	bool isAlive;
-	int amountToPool;
-	virtual void key(unsigned char key);
-	struct Entity
-	{
-        cyclone::Particle particle;
-        unsigned startTime;
-
-        /** Draws the round. */
-        void render()
-        {
-            cyclone::Vector3 position;
-            particle.getPosition(&position);
-
-
-			/*glColor3f(0, 0, 0);
-			glPushMatrix();
-			glTranslatef(position.x, position.y, position.z);
-			glutSolidSphere(0.3f, 5, 4);
-			glPopMatrix();*/
-			
-        }
-	};
+    virtual ~GameEntity() = default;
 };
+
+template<typename T>
+concept ConcreteGameEntity =
+std::derived_from<T, GameEntity> &&
+!std::is_abstract_v<T>;
+
+template<typename T, std::size_t Capacity>
+class ObjectPool
+{
+private:
+
+    struct Slot
+    {
+        std::optional<T> object;
+        std::uint64_t generation = 1;
+    };
+
+    std::array<Slot, Capacity> slots{};
+
+    void increaseGeneration(Slot& slot)
+    {
+        ++slot.generation;
+
+        if (slot.generation == 0)
+            ++slot.generation;
+    }
+
+public:
+
+    // CREATE
+    template<typename... Args>
+    std::optional<EntityId> create(Args&&... args)
+    {
+        for (std::size_t i = 0; i < Capacity; ++i)
+        {
+            Slot& slot = slots[i];
+
+            if (!slot.object)
+            {
+                slot.object.emplace(
+                    std::forward<Args>(args)...
+                );
+
+                return EntityId{ i, slot.generation };
+            }
+        }
+
+        return std::nullopt;
+    }
+
+    // GET
+    T* get(EntityId id)
+    {
+        if (id.generation == 0 || id.index >= Capacity)
+            return nullptr;
+
+        Slot& slot = slots[id.index];
+
+        if (!slot.object)
+            return nullptr;
+
+        if (slot.generation != id.generation)
+            return nullptr;
+
+        return &(*slot.object);
+    }
+
+    const T* get(EntityId id) const
+    {
+        if (id.generation == 0 || id.index >= Capacity)
+            return nullptr;
+
+        const Slot& slot = slots[id.index];
+
+        if (!slot.object)
+            return nullptr;
+
+        if (slot.generation != id.generation)
+            return nullptr;
+
+        return &(*slot.object);
+    }
+
+    // DESTROY
+    bool destroy(EntityId id)
+    {
+        if (get(id) == nullptr)
+            return false;
+
+        Slot& slot = slots[id.index];
+
+        slot.object.reset();
+        increaseGeneration(slot);
+
+        return true;
+    }
+
+    // FOREACH
+    template<typename Function>
+    void forEach(Function&& function)
+    {
+        for (std::size_t i = 0; i < Capacity; ++i)
+        {
+            Slot& slot = slots[i];
+
+            if (slot.object)
+            {
+                function(
+                    EntityId{ i, slot.generation },
+                    *slot.object
+                );
+            }
+        }
+    }
+
+    // CONST FOREACH
+    template<typename Function>
+    void forEach(Function&& function) const
+    {
+        for (std::size_t i = 0; i < Capacity; ++i)
+        {
+            const Slot& slot = slots[i];
+
+            if (slot.object)
+            {
+                function(
+                    EntityId{ i, slot.generation },
+                    *slot.object
+                );
+            }
+        }
+    }
+
+    // CLEAR
+    void clear()
+    {
+        for (Slot& slot : slots)
+        {
+            if (slot.object)
+            {
+                slot.object.reset();
+                increaseGeneration(slot);
+            }
+        }
+    }
+
+    static constexpr std::size_t capacity()
+    {
+        return Capacity;
+    }
+};
+
 
