@@ -5,8 +5,11 @@ class Menus
 {
 public:
 	void start();
+	void hub();
+	// faire des bouton 
 private:
-	// branch
+	void getPosition();
+
 
 };
 
