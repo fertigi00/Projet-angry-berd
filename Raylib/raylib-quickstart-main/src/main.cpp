@@ -9,7 +9,6 @@ by Jeffery Myers is marked with CC0 1.0. To view a copy of this license, visit h
 
 #include "pch.h"
 #include <test.h>
-#include <iostream>
 
 #include "raylib.h"
 
@@ -18,8 +17,8 @@ by Jeffery Myers is marked with CC0 1.0. To view a copy of this license, visit h
 
 int main ()
 {
-	test t;
-	t.tzesrt();
+	/*test t;
+	t.tzesrt();*/
 	
 
 	// Tell the window to use vsync and work on high DPI displays
