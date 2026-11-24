@@ -12,6 +12,9 @@
   <Project Path="../Cyclone/Cyclone.vcxproj" Id="bbce2f24-4212-4918-9a3f-0e0e3289cef9">
     <Platform Solution="*|ARM64" Project="x64" />
   </Project>
+  <Project Path="../SiegeLabTest/SiegeLabTest.vcxproj" Id="cf65cd50-5405-438d-aa3f-5e3545640800">
+    <Platform Solution="*|ARM64" Project="x64" />
+  </Project>
   <Project Path="raylib-quickstart-main.vcxproj" Id="7223710C-5E1D-9A5E-478A-306F332300CB" DefaultStartup="true">
     <BuildDependency Project="raylib.vcxproj" />
   </Project>
