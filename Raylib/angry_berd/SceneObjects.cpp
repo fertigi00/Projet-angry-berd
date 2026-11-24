@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "SceneObjects.h"
 
-void SceneObjects::SceneObject()
+void ObjectPool::SceneObject()
 {
 	while (isAlive)
 	{
@@ -9,32 +9,42 @@ void SceneObjects::SceneObject()
 	}
 }
 
-void SceneObjects::create()
+void ObjectPool::create()
+{
+	
+}
+
+void ObjectPool::getPosition()
 {
 
 }
 
-void SceneObjects::getPosition()
-{
-
-}
-
-void SceneObjects::getID()
+void ObjectPool::getID()
 {
 	return /*id*/;
 }
 
-void SceneObjects::destroy()
+void ObjectPool::destroy()
 {
 
 }
 
-void SceneObjects::forEach()
+void ObjectPool::forEach()
 {
 
 }
 
-void SceneObjects::clear()
+void ObjectPool::clear()
 {
 	destroy();
+}
+void ObjectPool::key(unsigned char key)
+{
+	switch (key)
+	{
+	case 'A/D':   break;
+	case '2':  break;
+	case '3':  break;
+	case '4':  break;
+	}
 }
