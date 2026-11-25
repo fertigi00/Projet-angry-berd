@@ -160,7 +160,9 @@
   <ItemGroup>
     <ClInclude Include="caméra.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="FreeCamera.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="ICameraController.h" />
     <ClInclude Include="InputController.h" />
     <ClInclude Include="Launcher.h" />
     <ClInclude Include="Menus.h" />
@@ -171,6 +173,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="angry_berd.cpp" />
+    <ClCompile Include="FreeCamera.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="InputController.cpp" />
     <ClCompile Include="Launcher.cpp" />
