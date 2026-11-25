@@ -22,11 +22,6 @@ public:
     virtual ~GameEntity() = default;
 };
 
-template<typename T>
-concept ConcreteGameEntity =
-std::derived_from<T, GameEntity> &&
-!std::is_abstract_v<T>;
-
 template<typename T, std::size_t Capacity>
 class ObjectPool
 {
@@ -88,22 +83,6 @@ public:
         return &(*slot.object);
     }
 
-    const T* get(EntityId id) const
-    {
-        if (id.generation == 0 || id.index >= Capacity)
-            return nullptr;
-
-        const Slot& slot = slots[id.index];
-
-        if (!slot.object)
-            return nullptr;
-
-        if (slot.generation != id.generation)
-            return nullptr;
-
-        return &(*slot.object);
-    }
-
     // DESTROY
     bool destroy(EntityId id)
     {
@@ -125,24 +104,6 @@ public:
         for (std::size_t i = 0; i < Capacity; ++i)
         {
             Slot& slot = slots[i];
-
-            if (slot.object)
-            {
-                function(
-                    EntityId{ i, slot.generation },
-                    *slot.object
-                );
-            }
-        }
-    }
-
-    // CONST FOREACH
-    template<typename Function>
-    void forEach(Function&& function) const
-    {
-        for (std::size_t i = 0; i < Capacity; ++i)
-        {
-            const Slot& slot = slots[i];
 
             if (slot.object)
             {

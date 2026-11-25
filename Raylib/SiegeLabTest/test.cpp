@@ -1,18 +1,19 @@
 #include "pch.h"
 #include "../angry_berd/SceneObjects.h"
 
-//struct TestObject
-//{
-//    int value;
-//
-//    TestObject(int v) : value(v) {}
-//};
-//
+struct TestObject
+{
+    int value;
+
+    TestObject(int v) : value(v) {}
+};
+
+
 //TEST(ObjectPoolTests, CreateAndGet)
 //{
 //    ObjectPool<TestObject, 5> pool;
 //
-//    auto id = pool.create(42);
+//    auto id = pool.reate(42);
 //
 //    ASSERT_TRUE(id.has_value());
 //

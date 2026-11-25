@@ -24,7 +24,7 @@ public:
     ShotSettings shotSettings() const;
 
     void setOrigin(cyclone::Vector3 newOrigin);
-
+    void aim(const LauncherInput& input, float deltaTime);
     float getYaw() const { return yaw; }
     float getPitch() const { return pitch; }
     float getSpeed() const { return speed; }
