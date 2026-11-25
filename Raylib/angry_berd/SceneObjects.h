@@ -20,6 +20,8 @@ class GameEntity
 {
 public:
     virtual ~GameEntity() = default;
+    void draw();
+
 };
 
 template<typename T, std::size_t Capacity>

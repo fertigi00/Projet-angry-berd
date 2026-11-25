@@ -19,7 +19,6 @@ private:
     Vector3 calculateDirection() const;
 
 public:
-    /*void aim(const LauncherInput& input, float deltaTime);*/
 
     ShotSettings shotSettings() const;
 
