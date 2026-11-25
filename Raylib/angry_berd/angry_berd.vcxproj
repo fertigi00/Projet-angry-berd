@@ -119,6 +119,7 @@
       <LanguageStandard>stdcpp20</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>..\Cyclone;..\raylib-quickstart-main\build\external\raylib-master\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);build\external\raylib-master\src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -129,6 +130,9 @@
     <Manifest>
       <EnableSegmentHeap>true</EnableSegmentHeap>
     </Manifest>
+    <Lib>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -141,6 +145,7 @@
       <LanguageStandard>stdcpp20</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>..\Cyclone;..\raylib-quickstart-main\build\external\raylib-master\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalIncludeDirectories>;build\external\raylib-master\src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -155,12 +160,20 @@
   <ItemGroup>
     <ClInclude Include="caméra.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="InputController.h" />
+    <ClInclude Include="Launcher.h" />
     <ClInclude Include="Menus.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="SceneObjects.h" />
+    <ClInclude Include="ShotSettings.h" />
     <ClInclude Include="test.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="angry_berd.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="InputController.cpp" />
+    <ClCompile Include="Launcher.cpp" />
     <ClCompile Include="caméra.cpp" />
     <ClCompile Include="Menus.cpp" />
     <ClCompile Include="pch.cpp">
@@ -169,7 +182,13 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="SceneObjects.cpp" />
     <ClCompile Include="test.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cyclone\Cyclone.vcxproj">
+      <Project>{bbce2f24-4212-4918-9a3f-0e0e3289cef9}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

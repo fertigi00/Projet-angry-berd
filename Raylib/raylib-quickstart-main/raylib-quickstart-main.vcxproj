@@ -143,6 +143,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>DEBUG;PLATFORM_DESKTOP;GRAPHICS_API_OPENGL_33;_WINSOCK_DEPRECATED_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;include;build\external\raylib-master\src;$(SolutionDir)source\repos\Projet angry berd\Raylib\angry_berd;C:\Users\fcomte\source\repos\Projet angry berd\Raylib\angry_berd;C:\Users\ajacquemet-levina\source\repos\Projet-angry-berd\Raylib\angry_berd;C:\Users\vchas\source\repos\fertigi00\Projet-angry-berd\Raylib\angry_berd;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalIncludeDirectories>src;include;build\external\raylib-master\src;$(SolutionDir)source\repos\Projet angry berd\Raylib\angry_berd;C:\Users\fcomte\source\repos\Projet angry berd\Raylib\angry_berd;C:\Users\ajacquemet-levina\source\repos\Projet-angry-berd\Raylib\angry_berd;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
@@ -159,7 +160,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>raylib.lib;winmm.lib;gdi32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>bin\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>bin\Debug;..\angry_berd\x64\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -215,7 +216,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>NDEBUG;PLATFORM_DESKTOP;GRAPHICS_API_OPENGL_33;_WINSOCK_DEPRECATED_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;include;build\external\raylib-master\src;$(SolutionDir)source\repos\Projet angry berd\Raylib\angry_berd;C:\Users\fcomte\source\repos\Projet angry berd\Raylib\angry_berd;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;include;build\external\raylib-master\src;$(SolutionDir)source\repos\Projet angry berd\Raylib\angry_berd;C:\Users\fcomte\source\repos\Projet angry berd\Raylib\angry_berd;C:\Users\ajacquemet-levina\source\repos\Projet-angry-berd\Raylib\angry_berd;C:\Users\vchas\source\repos\fertigi00\Projet-angry-berd\Raylib\angry_berd;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
