@@ -2,8 +2,7 @@
 #include "pch.h"
 #include "Launcher.h"
 
-#include "../raylib-quickstart-main/src/resource_dir.h"
-
+#include "raymath.h"
 #include <algorithm>
 #include <cmath>
 
@@ -43,12 +42,12 @@ void Launcher::aim(const LauncherInput& input, float deltaTime)
         projectileKind = ProjectileKind::Heavy;
 }
 
-cyclone::Vector3 Launcher::calculateDirection() const
+Vector3 Launcher::calculateDirection() const
 {
     const float yawRadians = yaw * DEG_TO_RAD;
     const float pitchRadians = pitch * DEG_TO_RAD;
 
-    cyclone::Vector3 direction;
+    Vector3 direction;
 
     direction.x = std::cos(yawRadians) *
         std::cos(pitchRadians);
@@ -59,7 +58,7 @@ cyclone::Vector3 Launcher::calculateDirection() const
         std::cos(pitchRadians);
 
     // Ensure normalized direction
-    return /*Vector3Normalize(*/direction/*)*/;
+    return Vector3Normalize(direction);
 }
 
 ShotSettings Launcher::shotSettings() const
@@ -74,7 +73,7 @@ ShotSettings Launcher::shotSettings() const
     return settings;
 }
 
-void Launcher::setOrigin(cyclone::Vector3 newOrigin)
+void Launcher::setOrigin(Vector3 newOrigin)
 {
     origin = newOrigin;
 }

@@ -32,15 +32,4 @@ LauncherInput InputController::capture() const
     input.selectHeavy = IsKeyPressed(KEY_TWO);
 
     return input;
-
-    /*void InputController::key(unsigned char key)
-    {
-        switch (key)
-        {
-        case '1': currentShotType = PISTOL; break;
-        case '2': currentShotType = ARTILLERY; break;
-        case '3': currentShotType = FIREBALL; break;
-        case '4': currentShotType = LASER; break;
-        }
-    }*/
 }

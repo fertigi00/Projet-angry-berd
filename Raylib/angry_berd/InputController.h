@@ -18,6 +18,4 @@ class InputController
 {
 public:
     LauncherInput capture() const;
-    /** Handle a keypress. */
-    void key(unsigned char key);
 };

@@ -23,7 +23,7 @@ void Game::Run()
 	ShotSettings shot = launcher.shotSettings();
 
 	// When firing:
-	cyclone::Vector3 velocity = shot.initialVelocity();
+	Vector3 velocity = shot.initialVelocity();
 
 	// Tell the window to use vsync and work on high DPI displays
 	SetConfigFlags(FLAG_VSYNC_HINT | FLAG_WINDOW_HIGHDPI);

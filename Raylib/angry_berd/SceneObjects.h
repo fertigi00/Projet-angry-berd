@@ -47,7 +47,7 @@ public:
 
     // CREATE
     template<typename... Args>
-    std::optional<EntityId> create(Args&&... args)
+    T* create(Args&&... args)
     {
         for (std::size_t i = 0; i < Capacity; ++i)
         {
