@@ -97,10 +97,9 @@ void Game::Run()
 		DrawRectangle(10, 10, 320, 93, Fade(SKYBLUE, 0.5f));
 		DrawRectangleLines(10, 10, 320, 93, BLUE);
 
-		DrawText("Free camera default controls:", 20, 20, 10, BLACK);
-		DrawText("- Mouse Wheel to Zoom in-out", 40, 40, 10, DARKGRAY);
-		DrawText("- Mouse Wheel Pressed to Pan", 40, 60, 10, DARKGRAY);
-		DrawText("- Z to zoom to (0, 0, 0)", 40, 80, 10, DARKGRAY);
+		DrawText("Azimut    : %.1f deg",  10, 10, 20, DARKGRAY); 
+		DrawText("Elevation : %.1f deg",  10, 34, 20, DARKGRAY);
+		DrawText("Vitesse   : %.1f m/s", 10, 58, 20, DARKGRAY);
 		
 
 		

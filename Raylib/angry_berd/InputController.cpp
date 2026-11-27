@@ -30,7 +30,10 @@ LauncherInput InputController::capture() const
     std::cout << "speed up" << std::endl;
     // Projectile selection
     input.selectStandard = IsKeyPressed(KEY_ONE);
+    ProjectileKind projectileKind = ProjectileKind::Standard;
+
     input.selectHeavy = IsKeyPressed(KEY_TWO);
+     projectileKind = ProjectileKind::Heavy;
 
     return input;
 }

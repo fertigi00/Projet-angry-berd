@@ -24,6 +24,7 @@ public:
 
 };
 
+
 template<typename T, std::size_t Capacity>
 class ObjectPool
 {
@@ -49,7 +50,7 @@ public:
 
     // CREATE
     template<typename... Args>
-    T* create(Args&&... args)
+    std::optional<EntityId> create(Args&&... args)
     {
         for (std::size_t i = 0; i < Capacity; ++i)
         {
@@ -130,6 +131,21 @@ public:
         }
     }
 
+    // LIVE COUNT
+    std::size_t liveCount() const
+    {
+        std::size_t count = 0;
+
+        for (const Slot& slot : slots)
+        {
+            if (slot.object)
+                ++count;
+        }
+
+        return count;
+    }
+
+    // CAPACITY
     static constexpr std::size_t capacity()
     {
         return Capacity;
