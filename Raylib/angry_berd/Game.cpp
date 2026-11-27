@@ -55,6 +55,7 @@ void Game::Run()
 		Vector3 velocity = shot.initialVelocity();
 		//see move
 		const Vector3 origine = { shot.origin.x, shot.origin.y, shot.origin.z };
+		const float draw = 0.2;
 		const float length = shot.speed * 0.4f;
 		const Vector3 tip = {
 		origine.x + shot.direction.x * length,
@@ -80,6 +81,7 @@ void Game::Run()
 		DrawSphere(origine, heavy ? 0.36f : 0.28f, heavy ? DARKPURPLE : BLUE);
 		DrawLine3D(origine, tip, MAGENTA);
 		DrawSphere(tip, 0.1f, MAGENTA);
+		DrawSphere(origine, draw ,BLACK); // to draw cannon
 
 		cam.End();
 
