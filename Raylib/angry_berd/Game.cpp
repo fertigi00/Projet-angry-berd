@@ -60,8 +60,6 @@ void Game::Run()
 
 	cameraManager cam({ 0,0,0 }, 10.0f);
 
-	Vector3 cubePosition = { 0.0f, 0.0f, 0.0f };
-
 	DisableCursor();                    // Limit cursor to relative movement inside the window
 
 	SetTargetFPS(60);
@@ -98,29 +96,19 @@ void Game::Run()
 
 		DrawCube(cubePosition, 2.0f, 2.0f, 2.0f, RED);
 		DrawCubeWires(cubePosition, 2.0f, 2.0f, 2.0f, MAROON);
-
+		//luncher
+		DrawGrid(20, 1.0);
+		DrawSphere(origine, heavy ? 0.36f : 0.28f, heavy ? DARKPURPLE : BLUE);
+		DrawLine3D(origine, tip, RED);
+		DrawSphere(tip, 0.1f, RED);
 
 		cam.End();
 
 		DrawRectangle(10, 10, 320, 93, Fade(SKYBLUE, 0.5f));
 		DrawRectangleLines(10, 10, 320, 93, BLUE);
-		ClearBackground(RAYWHITE);
-
-		BeginMode3D(camera);
-
-		DrawCube(cubePosition, 2.0f, 2.0f, 2.0f, RED);
-		DrawCubeWires(cubePosition, 2.0f, 2.0f, 2.0f, MAROON);
 
 		
-		DrawGrid(20, 1.0);
-		DrawSphere(origine, heavy ? 0.36f : 0.28f, heavy ? DARKPURPLE : BLUE);
-		DrawLine3D(origine, tip, RED);
-		DrawSphere(tip, 0.1f, RED);
-		EndMode3D();
-
-		DrawRectangle(10, 10, 320, 93, Fade(SKYBLUE, 0.5f));
-		DrawRectangleLines(10, 10, 320, 93, BLUE);
-
+		
 		DrawText("Azimut    : %.1f deg",  10, 10, 20, DARKGRAY); //???
 		DrawText("Elevation : %.1f deg",  10, 34, 20, DARKGRAY);
 		DrawText("Vitesse   : %.1f m/s", 10, 58, 20, DARKGRAY);
