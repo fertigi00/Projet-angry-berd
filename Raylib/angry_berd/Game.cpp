@@ -4,6 +4,7 @@
 #include "InputController.h"
 #include "Launcher.h"
 #include "raylib.h"
+#include "camera.h"
 
 void Game::Run()
 {
@@ -26,6 +27,7 @@ void Game::Run()
 
 	// Tell the window to use vsync and work on high DPI displays
 	SetConfigFlags(FLAG_VSYNC_HINT | FLAG_WINDOW_HIGHDPI);
+
 
 	// Create the window and OpenGL context
 	InitWindow(screenWidth, screenHeight, "raylib [core] example - 3d camera free");
@@ -54,9 +56,15 @@ void Game::Run()
 	SetConfigFlags(FLAG_VSYNC_HINT | FLAG_WINDOW_HIGHDPI);
 
 	// Create the window and OpenGL context
-	InitWindow(800, 600, "Hello Raylib");
+	InitWindow(screenWidth, screenHeight, "raylib [core] example - 3d camera free");
 
-	
+	cameraManager cam({ 0,0,0 }, 10.0f);
+
+	Vector3 cubePosition = { 0.0f, 0.0f, 0.0f };
+
+	DisableCursor();                    // Limit cursor to relative movement inside the window
+
+	SetTargetFPS(60);
 
 	// game loop
 	while (!WindowShouldClose())		// run the loop until the user presses ESCAPE or presses the Close button on the window
@@ -78,8 +86,24 @@ void Game::Run()
 
 		if (IsKeyPressed(KEY_Z)) camera.target = Vector3{ 0.0f, 0.0f, 0.0f };
 		// drawing
+		cam.update();
+
 		BeginDrawing();
 
+		ClearBackground(RAYWHITE);
+
+		cam.Begin();
+
+		DrawGrid(10, 1.0f);
+
+		DrawCube(cubePosition, 2.0f, 2.0f, 2.0f, RED);
+		DrawCubeWires(cubePosition, 2.0f, 2.0f, 2.0f, MAROON);
+
+
+		cam.End();
+
+		DrawRectangle(10, 10, 320, 93, Fade(SKYBLUE, 0.5f));
+		DrawRectangleLines(10, 10, 320, 93, BLUE);
 		ClearBackground(RAYWHITE);
 
 		BeginMode3D(camera);
