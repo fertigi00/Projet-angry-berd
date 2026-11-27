@@ -8,8 +8,6 @@
 
 void Game::Run()
 {
-	/*test t;
-	//t.tzesrt();*/
 	InputController inputController;
 	Launcher launcher;
 
@@ -25,33 +23,10 @@ void Game::Run()
 	// Get firing information
 	ShotSettings shot = launcher.shotSettings();
 
-	// Tell the window to use vsync and work on high DPI displays
-	SetConfigFlags(FLAG_VSYNC_HINT | FLAG_WINDOW_HIGHDPI);
-
-
-	// Create the window and OpenGL context
-	InitWindow(screenWidth, screenHeight, "raylib [core] example - 3d camera free");
-
-	Camera3D camera = { 0 };
-	camera.position = Vector3{ 10.0f, 10.0f, 10.0f }; // Camera position
-	camera.target = Vector3{ 0.0f, 0.0f, 0.0f };      // Camera looking at point
-	camera.up = Vector3{ 0.0f, 1.0f, 0.0f };          // Camera up vector (rotation towards target)
-	camera.fovy = 45.0f;                                // Camera field-of-view Y
-	camera.projection = CAMERA_PERSPECTIVE;             // Camera projection type
 
 	Vector3 cubePosition = { 0.0f, 0.0f, 0.0f };
 
-	DisableCursor();                    // Limit cursor to relative movement inside the window
-
-	SetTargetFPS(60);
-
-	const Vector3 origine = { shot.origin.x, shot.origin.y, shot.origin.z };
-	const float length = shot.speed * -0.4f;
-	const Vector3 tip = {
-	origine.x + shot.direction.x * length,
-	origine.y + shot.direction.y * length,
-	origine.z + shot.direction.z * length
-	};
+	
 	// Tell the window to use vsync and work on high DPI displays
 	SetConfigFlags(FLAG_VSYNC_HINT | FLAG_WINDOW_HIGHDPI);
 
@@ -78,18 +53,22 @@ void Game::Run()
 		ShotSettings shot = launcher.shotSettings();
 		const bool heavy = (shot.projectileKind == ProjectileKind::Heavy);
 		Vector3 velocity = shot.initialVelocity();
+		//see move
+		const Vector3 origine = { shot.origin.x, shot.origin.y, shot.origin.z };
+		const float length = shot.speed * 0.4f;
+		const Vector3 tip = {
+		origine.x + shot.direction.x * length,
+		origine.y + shot.direction.y * length,
+		origine.z + shot.direction.z * length
+		};
 
-		// When firing:
-		UpdateCamera(&camera, CAMERA_FREE);
-
-		if (IsKeyPressed(KEY_Z)) camera.target = Vector3{ 0.0f, 0.0f, 0.0f };
 		// drawing
 		cam.update();
 
 		BeginDrawing();
 
 		ClearBackground(RAYWHITE);
-
+		//to SEE THE 3D
 		cam.Begin();
 
 		DrawGrid(10, 1.0f);
@@ -99,8 +78,8 @@ void Game::Run()
 		//luncher
 		DrawGrid(20, 1.0);
 		DrawSphere(origine, heavy ? 0.36f : 0.28f, heavy ? DARKPURPLE : BLUE);
-		DrawLine3D(origine, tip, RED);
-		DrawSphere(tip, 0.1f, RED);
+		DrawLine3D(origine, tip, MAGENTA);
+		DrawSphere(tip, 0.1f, MAGENTA);
 
 		cam.End();
 
@@ -109,9 +88,10 @@ void Game::Run()
 
 		
 		
-		DrawText("Azimut    : %.1f deg",  10, 10, 20, DARKGRAY); //???
-		DrawText("Elevation : %.1f deg",  10, 34, 20, DARKGRAY);
-		DrawText("Vitesse   : %.1f m/s", 10, 58, 20, DARKGRAY);
+		DrawText(TextFormat("Azimut    : %.1f deg", launcher.getYaw()), 10, 10, 20, DARKGRAY);
+		DrawText(TextFormat("Elevation : %.1f deg", launcher.getPitch()), 10, 34, 20, DARKGRAY);
+		DrawText(TextFormat("Vitesse   : %.1f m/s", launcher.getSpeed()), 10, 58, 20, DARKGRAY);
+		DrawText(TextFormat("Projectile: %s", heavy ? "Heavy" : "Standard"), 10, 82, 20, DARKGRAY);
 		
 
 		

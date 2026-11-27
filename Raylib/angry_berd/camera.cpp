@@ -22,13 +22,13 @@ void cameraManager::update(){
 
     // Limite la rotation verticale pour éviter les retournements
     //vertical< = Clamp(vertical, -1.4f, 1.4f);
-    if (vertical >= -1.4f)
-    if (vertical <= 1.4f)
+    if (vertical > -1.4f)
+    if (vertical < 1.4f)
     // Zoom avec la molette
     distance -= GetMouseWheelMove() * zoomSpeed;
     //distance = Clamp(distance, 2.0f, 50.0f); // Limite du zoom
-    if (distance >= 2.0f)
-    if (distance <= 50.0f)
+    if (distance > 2.0f)
+    if (distance < 50.0f)
     // Calcul de la position orbitale (sphère autour de la cible)
     Camera.position.x = target.x + distance * cosf(vertical) * sinf(horizontal);
     Camera.position.y = target.y + distance * sinf(vertical);
