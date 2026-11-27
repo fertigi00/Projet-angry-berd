@@ -1,2 +1,2 @@
-#pragma once
-void ICameraControllze();
+//#pragma once
+//void ICameraControllze();

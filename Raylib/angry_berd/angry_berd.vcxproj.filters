@@ -42,7 +42,7 @@
     <ClInclude Include="Menus.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="caméra.h">
+    <ClInclude Include="camera.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="ICameraController.h">
@@ -65,7 +65,7 @@
     <ClCompile Include="Menus.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="caméra.cpp">
+    <ClCompile Include="camera.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="SceneObjects.cpp">

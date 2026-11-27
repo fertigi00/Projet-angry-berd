@@ -1,6 +1,6 @@
 #pragma once
-#include "caméra.h"
-class FreeCamera
-{
-};
-
+//#include "caméra.h"
+//class FreeCamera
+//{
+//};
+//
