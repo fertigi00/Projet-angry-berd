@@ -7,12 +7,13 @@
 #include "../Cyclone/src/contacts.cpp"
 #include "../Cyclone/include/core.h"
 #include "../Cyclone/include/particle.h"
-
 class Projectile
 {
 public:
-	void integrate(real duration);
-
-
+    void fire();
+    //particle.setMass(1.0f); // 1kg
+    //particle.setVelocity(0.0f, 0.0f, 10.0f); // 10m/s
+    //particle.setAcceleration(0.0f, 0.6f, 0.0f);
+    //particle.setDamping(0.90f);
 };
 

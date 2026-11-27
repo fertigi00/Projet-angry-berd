@@ -14,6 +14,7 @@ struct ShotSettings
     Vector3 direction;
 
     float speed = 8.0f;
+    
 
     ProjectileKind projectileKind = ProjectileKind::Standard;
 
