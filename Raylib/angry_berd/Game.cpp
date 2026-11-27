@@ -42,8 +42,14 @@ void Game::Run()
 	DisableCursor();                    // Limit cursor to relative movement inside the window
 
 	SetTargetFPS(60);
-	/*const Vector3 origine = { settings.origine.x, shot.origine.y, shot.origine.z };*/
-	
+
+	const Vector3 origine = { shot.origin.x, shot.origin.y, shot.origin.z };
+	const float length = shot.speed * -0.4f;
+	const Vector3 tip = {
+	origine.x + shot.direction.x * length,
+	origine.y + shot.direction.y * length,
+	origine.z + shot.direction.z * length
+	};
 	// Tell the window to use vsync and work on high DPI displays
 	SetConfigFlags(FLAG_VSYNC_HINT | FLAG_WINDOW_HIGHDPI);
 
@@ -56,6 +62,18 @@ void Game::Run()
 	while (!WindowShouldClose())		// run the loop until the user presses ESCAPE or presses the Close button on the window
 	{
 
+		float deltaTime = GetFrameTime();
+
+		LauncherInput input = inputController.capture();
+
+		launcher.aim(input, deltaTime);
+
+		// Get firing information
+		ShotSettings shot = launcher.shotSettings();
+		const bool heavy = (shot.projectileKind == ProjectileKind::Heavy);
+		Vector3 velocity = shot.initialVelocity();
+
+		// When firing:
 		UpdateCamera(&camera, CAMERA_FREE);
 
 		if (IsKeyPressed(KEY_Z)) camera.target = Vector3{ 0.0f, 0.0f, 0.0f };
@@ -69,8 +87,11 @@ void Game::Run()
 		DrawCube(cubePosition, 2.0f, 2.0f, 2.0f, RED);
 		DrawCubeWires(cubePosition, 2.0f, 2.0f, 2.0f, MAROON);
 
-		DrawGrid(10, 1.0f);
-
+		
+		DrawGrid(20, 1.0);
+		DrawSphere(origine, heavy ? 0.36f : 0.28f, heavy ? DARKPURPLE : BLUE);
+		DrawLine3D(origine, tip, RED);
+		DrawSphere(tip, 0.1f, RED);
 		EndMode3D();
 
 		DrawRectangle(10, 10, 320, 93, Fade(SKYBLUE, 0.5f));
@@ -82,20 +103,8 @@ void Game::Run()
 		DrawText("- Z to zoom to (0, 0, 0)", 40, 80, 10, DARKGRAY);
 		
 
-		float deltaTime = GetFrameTime();
+		
 
-		LauncherInput input = inputController.capture();
-
-		launcher.aim(input, deltaTime);
-
-		// Get firing information
-		ShotSettings shot = launcher.shotSettings();
-
-		// When firing:
-		Vector3 velocity = shot.initialVelocity();
-
-		/*DrawSphere();*/
-		DrawGrid(20, 1.0);
 
 		// end the frame and get ready for the next one  (display frame, poll input, etc...)
 		EndDrawing();

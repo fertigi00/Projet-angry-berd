@@ -11,7 +11,7 @@ private:
     float pitch = 5.0f;
     float speed = 8.0f;
 
-    Vector3 origin{ 0.0f, 0.0f, 0.0f };
+    Vector3 origin{ 8.0f, 1.0f, 0.0f };
 
     ProjectileKind projectileKind =
         ProjectileKind::Standard;

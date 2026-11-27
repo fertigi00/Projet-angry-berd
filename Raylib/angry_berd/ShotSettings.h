@@ -10,8 +10,8 @@ enum class ProjectileKind
 
 struct ShotSettings
 {
-    Vector3 origin{ 0.0f, 0.0f, 0.0f };
-    Vector3 direction{ 1.0f, 0.0f, 0.0f };
+    Vector3 origin;
+    Vector3 direction;
 
     float speed = 8.0f;
 
